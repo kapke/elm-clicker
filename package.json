@@ -1,0 +1,24 @@
+{
+  "name": "elm-clicker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --content-base app",
+    "build": "webpack -p",
+    "postinstall": "elm-package install"
+  },
+  "devDependencies": {
+    "css-loader": "^0.27.3",
+    "elm": "^0.18.0",
+    "elm-webpack-loader": "^4.2.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.3",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "node-uuid": "^1.4.8"
+  }
+}
