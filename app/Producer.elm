@@ -3,9 +3,6 @@ module Producer exposing (..)
 import Dict
 import Json.Encode as JSE
 
-
-type Action = BuyProducer Producer
-
 type alias State = List Producer
 
 type alias Producer =

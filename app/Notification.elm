@@ -5,10 +5,17 @@ import Random exposing (initialSeed, maxInt, minInt)
 import Task exposing (map)
 import Time
 
+type alias State = List Notification
+
+type Msg = AddNotification Notification | RemoveNotification Notification
+
 type alias Notification =
     { text : String
     , id : Int
     }
+
+initialState : State
+initialState = []
 
 add : (Notification -> msg) -> String -> Cmd msg
 add tagger notification =
@@ -23,3 +30,14 @@ remove tagger notification =
     Task.perform tagger (Process.sleep (5 * Time.second)
         |> Task.andThen (always <| Task.succeed notification))
 
+update : (Msg -> msg) -> Msg -> State -> (State, Cmd msg)
+update wrapMsg msg state =
+    case msg of
+        AddNotification notification ->
+            ( state |> List.reverse |> (::) notification |> List.reverse
+            , remove (\notification -> notification |> RemoveNotification |> wrapMsg) notification
+            )
+        RemoveNotification notification ->
+            ( List.filter (\n -> n.id /= notification.id) state
+            , Cmd.none
+            )

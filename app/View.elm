@@ -4,8 +4,9 @@ import Html exposing (Html, div, header, img, span, text)
 import Html.Attributes exposing (class, src)
 import Html.Events exposing (onClick)
 
-import Model exposing (Model, Msg(BuyProducer, MakeCookie))
+import Model exposing (Model)
 import Cookie
+import Msg exposing (Msg(BuyProducer, MakeCookie))
 import Notification exposing (Notification)
 import Producer
 
