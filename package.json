@@ -6,11 +6,17 @@
   "scripts": {
     "start": "webpack-dev-server --content-base app",
     "build": "webpack -p",
-    "postinstall": "elm-package install"
+    "postinstall": "elm-package install",
+    "test": "elm-test",
+    "test:watch": "elm-test --watch",
+    "format": "elm-format app/ --yes"
   },
   "devDependencies": {
     "css-loader": "^0.27.3",
     "elm": "^0.18.0",
+    "elm-analyse": "^0.11.0",
+    "elm-format": "^0.6.1-alpha",
+    "elm-test": "^0.18.8",
     "elm-webpack-loader": "^4.2.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "node-sass": "^4.5.0",

@@ -1,24 +1,29 @@
 module Cookie exposing (..)
 
-import Html exposing (Html, div, img, span, text)
-import Html.Attributes exposing (class, src)
-import Html.Events exposing (onClick)
 
+type alias State =
+    Int
 
-type alias State = Int
 
 add : Int -> State -> State
-add amount current =
-    current + amount
+add =
+    (+)
+
+
+increment =
+    add 1
+
 
 subtract : Int -> State -> State
-subtract amount current =
-    current - amount
+subtract =
+    (-)
+
 
 cookie : String
-cookie = "🍪" -- here is unicode cookie char
+cookie =
+    "🍪"
 
-cookiesPerSecond : Int -> String
+
+cookiesPerSecond : State -> String
 cookiesPerSecond cookies =
     (toString cookies) ++ cookie ++ "/s"
-

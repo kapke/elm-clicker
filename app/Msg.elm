@@ -1,14 +1,20 @@
 module Msg exposing (..)
 
-import Notification exposing (Notification)
+import Http
+import Model exposing (SerializedModel)
+import Notifications
 import Producer exposing (Producer)
-import StatePersistence
 import Time exposing (Time)
+import User exposing (UserId)
 
 
-type Msg =
-    MakeCookie
+type Msg
+    = MakeCookie
     | BuyProducer Producer
     | ProduceCookies Time
-    | NotificationMsg Notification.Msg
-    | StatePersistenceMsg StatePersistence.Msg
+    | NotificationMsg Notifications.Msg
+    | SetUserId UserId
+    | SaveState
+    | StateSaved (Result Http.Error String)
+    | RestoreState UserId SerializedModel
+    | RestoreStateFailed UserId String
